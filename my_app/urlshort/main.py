@@ -9,7 +9,7 @@ app = FastAPI(title='Short_URL')
 class URLItem(BaseModel):
     url: str
 
-conn = sqlite3.connect("urlshort/urls.db", check_same_thread=False)
+conn = sqlite3.connect("urls.db", check_same_thread=False)
 cur = conn.cursor()
 
 cur.execute("""
