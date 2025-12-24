@@ -21,7 +21,10 @@ cur.execute("""
     )
 """)
 
-task_id_counter = 1
+# Получем максимальный номер существующей задачи, если такой нет, то присваиваем 1
+cur.execute("SELECT MAX(task_id) FROM tasks;")
+result = cur.fetchone()
+task_id_counter = (result[0] or 0) + 1
 
 # Создание новой задачи
 @app.post('/items')
